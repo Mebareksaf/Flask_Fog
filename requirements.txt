@@ -1,0 +1,10 @@
+click==7.1.2
+Flask
+itsdangerous==1.1.0
+Jinja2
+MarkupSafe==1.1.1
+uWSGI 
+Werkzeug==1.0.1
+numpy
+futures
+pymongo

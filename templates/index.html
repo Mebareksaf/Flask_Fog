@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{%block title%}Streaming page{%endblock%}
+{%block content%}
+
+<div class="container-fluid">
+    <div class="row">
+{% for camera_number in range(0, camera_list) %}
+        <div class="col-md-4">
+            <div class="card" >
+                <img src="{{ url_for('video_feed', list_id=camera_number) }}" >
+                <div class="card-body">
+                  <!--p class="card-text">Site {{camera_number}} </p-->
+                  <form action="/{{camera_number}}/">
+                    <p><input type = "submit" value = "Camera {{camera_number}}" /></p>
+                  </form>
+                </div>
+            </div>
+        </div>
+        
+
+
+{% endfor %}
+</div>
+</div>
+
+<div id="liveAlertPlaceholder">{{action}}</div>
+<button type="button" class="btn btn-primary" id="{{action}}">"{{action}}"</button>
+
+
+
+
+
+{%endblock%}
+
+
+<!--<script type="text/javascript">
+  var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+  var alertTrigger = document.getElementById('suspect')
+
+  function alert(message, type) {
+  var wrapper = document.createElement('div')
+  wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+  alertPlaceholder.append(wrapper)
+  }
+
+  if (alertTrigger) {
+    alert('Nice, you triggered this alert message!', 'success')
+  }
+</script>-->
+
+<!--<meta id="action" data-action="{{action}}">
+<script type="text/javascript">
+  var s = $('#action').data("action");
+  Suspect = function(s){
+    if (s == "suspect") {
+      alert('SUSPICIOUS');
+    }
+  }
+</script>-->
+
+
+<!--<script>
+    var latest = document.getElementById('latest_value');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "{{ url_for('stream') }}");
+    
+    xhr.onload = function() {
+        latest.textContent = xhr.responseText;
+    }
+    xhr.send();
+
+    var message = xhr.responseText.split('\n');
+    latest.textContent = message;
+</script>-->
+
+<!--<div class="container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>-->
+
+
+<!--<h1 id="header">{{ message }}</h1>
+  <script>
+    var heading = $("#header");
+    setInterval(function() {
+      if (heading.style.display == "block") { heading.style.display = "none"; }
+      else if (heading.style.display == "none") { heading.style.display = "block"; }
+    }, 1000);
+  </script>-->
+
+<!--{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}-->
+
+<!--<p><span id="latest_value"></span></p>
+<script>
+    var latest = document.getElementById('latest_value');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "{{ url_for('stream') }}");
+    
+    xhr.onload = function() {
+        latest.textContent = xhr.responseText;
+    }
+    xhr.send();
+
+    var message = xhr.responseText.split('\n');
+    latest.textContent = message;
+</script>-->

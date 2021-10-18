@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{%block title%}Recording page{%endblock%}
+{%block content%}
+<div class="container-fluid">
+    <div class="row">
+        {% for cam in lenvideos %}
+        {% set j = loop.index-1 %}
+        {% set jj = j | string %}
+        {% for i in range(0, cam) %}
+        <div class="col-md-4">
+            <div class="card" >
+                <h2>cam{{j}}</h2>
+                {%set ii = i | string %}
+                <video src={{ url_for('static', filename="camera"+jj+"/video"+ii+".mp4") }} controls loop></video>
+                <div class="card-body">
+                <p class="card-text">Video{{i}} </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <h1>
+            
+        </h1>
+        {% endfor %}
+        
+</div>
+</div>
+
+{%endblock%}
+
+
